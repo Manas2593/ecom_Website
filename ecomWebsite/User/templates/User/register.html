@@ -1,0 +1,48 @@
+{% load tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Portal</title>
+    {% tailwind_css %}
+</head>
+<body>
+    {% include 'User/navbar.html' %}
+
+
+    {% block content %}
+    <div class="bg-white flex justify-center items-center" style="height: 800px; width: 100%;">
+        <div class="login_wrap h-fit bg-gray-100 flex flex-col items-center p-8" style="width: 500px;">
+            <h1 class="text-black text-5xl font-bold tracking-widest font-Monts">Register</h1>
+            <form action="" method="post" class="w-5/6 flex flex-col items-center mt-6 h-fit">
+                {% csrf_token %}
+                <label for="email" class="text-black text-xl font-Monts mt-5">Email Address</label><br>
+                <input type="email" name="email" id="email" class="w-full ">
+                <label for="password1" class="text-black text-xl font-Monts mt-5">Password</label><br>
+                <input type="password" name="password1" id="password1" class="w-full ">
+                <label for="password2" class="text-black text-xl font-Monts mt-5">Confirm Password</label><br>
+                <input type="password" name="password2" id="password2" class="w-full ">
+                <button type="submit" class="mt-8 text-black text-2xl w-full border-2 border-yellow-400 bg-yellow-400 rounded-lg font-Monts hover:bg-yellow-500 hover:border-yellow-500">Submit</button>
+
+                <span class="mt-8 w-full flex flex-col items-start">
+                    <p>Already have an account? <a href="{% url 'login' %}" class="text-blue-500 underline font-Monts mb-3">Login</a></p>
+                    <p>Buying for work? <a href="#" class="text-blue-500 underline font-Monts mb-3">Create a business account</a></p>
+                    <!-- <p>Forgot Password? <a href="#" class="text-blue-500 underline font-Monts mb-3">Retrieve</a></p> -->
+                </span>
+                <!-- {{form.as_p}} -->
+
+                <span class="mt-5">
+                    <!-- <p>By continuing, you agree to Amazon's <a href="#" class="text-blue-500 underline font-Monts mb-3">Conditions of Use</a> and <a href="#" class="text-blue-500 underline font-Monts mb-3">Privacy Notice</a>.</p> -->
+                    <!-- {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %} -->
+                </span>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
