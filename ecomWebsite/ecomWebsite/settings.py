@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_countries',
 
     # Tailwind neccessities
     'tailwind',
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
 
     # Apps 
     'User',
-    'Business',
+    'Store',
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -138,6 +139,7 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

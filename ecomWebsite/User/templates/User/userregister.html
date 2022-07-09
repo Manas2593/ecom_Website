@@ -28,17 +28,17 @@
                 <button type="submit" class="mt-8 text-black text-2xl w-full border-2 border-yellow-400 bg-yellow-400 rounded-lg font-Monts hover:bg-yellow-500 hover:border-yellow-500">Submit</button>
 
                 <span class="mt-8 w-full flex flex-col items-start">
-                    <p>Already have an account? <a href="{% url 'login' %}" class="text-blue-500 underline font-Monts mb-3">Login</a></p>
-                    <p>Buying for work? <a href="#" class="text-blue-500 underline font-Monts mb-3">Create a business account</a></p>
+                    <p>Already have an account? <a href="{% url 'userlogin' %}" class="text-blue-500 underline font-Monts mb-3">Login</a></p>
+                    <p>Buying for work? <a href="{% url 'businessregister' %}" class="text-blue-500 underline font-Monts mb-3">Create a business account</a></p>
                     <!-- <p>Forgot Password? <a href="#" class="text-blue-500 underline font-Monts mb-3">Retrieve</a></p> -->
                 </span>
                 <!-- {{form.as_p}} -->
 
                 <span class="mt-5">
                     <!-- <p>By continuing, you agree to Amazon's <a href="#" class="text-blue-500 underline font-Monts mb-3">Conditions of Use</a> and <a href="#" class="text-blue-500 underline font-Monts mb-3">Privacy Notice</a>.</p> -->
-                    <!-- {% for message in messages %}
+                    {% for message in messages %}
                     <p>{{message}}</p>
-                    {% endfor %} -->
+                    {% endfor %}
                 </span>
             </form>
         </div>

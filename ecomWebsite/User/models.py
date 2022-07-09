@@ -1,4 +1,6 @@
 from django.db import models
+from django_countries.fields import CountryField
+from django.core.validators import MaxValueValidator
 
 
 # Custom User Model
@@ -82,4 +84,25 @@ class regUser(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
 
-    
+
+
+
+class userProfile(models.Model):
+    user = models.OneToOneField(regUser, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=255, null=True, blank=True)
+    last_name = models.CharField(max_length=255, null=True, blank=True)
+    age = models.IntegerField(null=True)
+    country_name = CountryField()
+    phone_number = models.IntegerField(null=True, blank=True, validators=[MaxValueValidator(99999999999)])
+    residence_number = models.CharField(max_length=150, null=True, blank=True)
+    residence_lane = models.CharField(max_length=255, null=True, blank=True)
+    residence_city = models.CharField(max_length=255, null=True, blank=True)
+    residence_State = models.CharField(max_length=30, null=True, blank=True)
+    residence_locality = models.CharField(max_length=80, null=True, blank=True)
+
+
+    def __str__(self) -> None:
+        if self.first_name and self.last_name:
+            return f"{self.first_name} {self.last_name}"
+        else:
+            return str(self.user)

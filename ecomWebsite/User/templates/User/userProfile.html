@@ -1,0 +1,57 @@
+{% load tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/021374a3b6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Login Portal</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet"> -->
+    {% tailwind_css %}
+    <style>
+        .inputprofile input{
+            width: 100%;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    {% include 'User/navbar.html' %}
+
+    {% block content %}
+    <div class="bg-white flex justify-center items-center" style="height: 1200px; width: 100%;">
+        <div class="login_wrap h-5/6 bg-gray-100 flex flex-col items-center p-8" style="width: 800px;">
+            <h1 class="text-black text-5xl font-bold tracking-widest font-Monts">User Profile</h1>
+            <form action="" method="post" class="w-full flex flex-col items-center mt-6 h-fit">
+                {% csrf_token %}
+                <label for="name" class="text-black text-xl font-Monts mt-5">Name</label><br>
+                <div class="w-full rounded-lg focus:border-yellow-400 m-auto flex justify-center inputprofile" style="outline:none !important;">{{form.first_name}} {{form.last_name}}</div>
+                <label for="phone" class="text-black text-xl font-Monts mt-5">Contact</label><br>
+                <div class="w-full rounded-lg focus:border-yellow-400 m-auto flex justify-center inputprofile" style="outline:none !important;">{{form.phone_number}}</div>
+                <label for="email" class="text-black text-xl font-Monts mt-5">Email</label><br>
+                <div class="w-full rounded-lg focus:border-yellow-400 m-auto flex justify-center inputprofile font-Monts" style="outline:none !important;">{{reguser}}</div>
+                <label for="password" class="text-black text-xl font-Monts mt-5">Age</label><br>
+                <div class="w-full rounded-lg focus:border-yellow-400 m-auto flex justify-center inputprofile" style="outline:none !important;">{{form.age}}</div>
+                <a href="{% url 'index' %}" class="w-full"><button type="button" class="mt-20 text-2xl w-full border-2 border-red-500 bg-red-500 rounded-lg font-Monts hover:bg-red-600 hover:border-red-600 text-white to-home"><i class="fa-solid fa-arrow-left"></i>   Back To Store</button></a>
+                <button type="submit" class="mt-5 text-2xl w-full border-2 border-yellow-400 bg-yellow-400 rounded-lg font-Monts hover:bg-yellow-500 hover:border-yellow-500 text-black">Submit   <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+    <script>
+        const email = document.querySelectorAll('.inputprofile');
+        // console.log(email[2])
+        email[2].addEventListener('click', () => {
+            alert('Mail can only be changed using user auth portal (find in section 11)');
+        });
+    </script>
+</html>

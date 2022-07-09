@@ -17,8 +17,8 @@
 
     {% block content %}
     <div class="bg-white flex justify-center items-center" style="height: 850px; width: 100%;">
-        <div class="login_wrap h-5/6 bg-gray-100 flex flex-col items-center p-8" style="width: 500px;">
-            <h1 class="text-black text-5xl font-bold tracking-widest font-Monts">Login</h1>
+        <div class="login_wrap h-5/6 bg-gray-100 flex flex-col items-center p-8 w-full" style="width: 500px;">
+            <h1 class="text-black text-5xl font-bold tracking-widest font-Monts w-full text-center">Login (Business)</h1>
             <form action="" method="post" class="w-fit flex flex-col items-center mt-6 h-fit">
                 {% csrf_token %}
                 <label for="email" class="text-black text-xl font-Monts mt-5">Email</label><br>
@@ -28,7 +28,7 @@
                 <button type="submit" class="mt-12 text-black text-2xl w-full border-2 border-yellow-400 bg-yellow-400 rounded-lg font-Monts hover:bg-yellow-500 hover:border-yellow-500">Submit</button>
 
                 <span class="mt-8 w-full flex flex-col items-start">
-                    <p>Don't have an account? <a href="{% url 'register' %}" class="text-blue-500 underline font-Monts mb-3">Register</a></p>
+                    <p>Don't have a business account? <a href="{% url 'businessregister' %}" class="text-blue-500 underline font-Monts mb-3">Create an business account</a></p>
                     <p>Forgot Password? <a href="#" class="text-blue-500 underline font-Monts mb-3">Retrieve</a></p>
                 </span>
 
