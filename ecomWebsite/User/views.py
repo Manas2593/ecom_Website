@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from User.forms import createregUser, userProfileForm
 from django.contrib.auth import login, logout, authenticate
@@ -11,7 +11,7 @@ from Store.models import Product
 def index(request):
     products = Product.objects.all()
     reguser = request.user
-    regusername = str(reguser.userprofile.first_name) + str(reguser.userprofile.last_name)
+    regusername = str(reguser.userprofile.first_name) + ' ' + str(reguser.userprofile.last_name)
     context = {'reguser':reguser, 'regusername':regusername, 'products':products}
     return render(request, 'User/index.html', context)
 
@@ -86,11 +86,19 @@ def businessLogin(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('index')
+            return redirect('businessInterface')
         else:
             messages.error(request, 'Business not registered.')
     context = {}
     return render(request, 'User/businesslogin.html', context)
+
+
+
+def businessInterface(request):
+    context = {}
+    return render(request, 'User/business_interface.html', context)
+
+
 
 
 
@@ -120,3 +128,13 @@ def reguserProfile(request):
             return ValueError('Problem submitting form currently. Try again after some time.')
     context = {'form':form, 'reguser':reguser}
     return render(request, 'User/userProfile.html', context)
+
+
+
+
+def product(request, pk):
+    reguser = request.user.userprofile
+    regusername = str(reguser.first_name) + ' ' + str(reguser.last_name)
+    singleproduct = get_object_or_404(Product, id=pk)
+    context = {'singleproduct':singleproduct, 'regusername':regusername}
+    return render(request, 'User/product.html', context)

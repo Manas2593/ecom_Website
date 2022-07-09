@@ -21,7 +21,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('User.urls')),
-    path('store/', include('Store.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 

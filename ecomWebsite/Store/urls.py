@@ -6,5 +6,5 @@ from Store.forms import *
 app_name = 'Store'
 urlpatterns = [
     path('', views.store, name='mainStore'),
-    path('product/', views.product, name='product'),
+    path('product_registration/', views.listProduct, name='product_registration'),
 ]

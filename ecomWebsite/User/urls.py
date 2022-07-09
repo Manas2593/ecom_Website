@@ -8,8 +8,11 @@ urlpatterns = [
     path('user/login/', views.userLogin, name='userlogin'),
     path('business/login/', views.businessLogin, name='businesslogin'),
     path('user/logout/', views.userLogout, name='userlogout'),
-    path('', include('Store.urls', namespace='product')),
+    # path('', include('Store.urls', namespace='product')),
+    path('product/<str:pk>', views.product, name='product'),
 
 
     path('user/profile/', views.reguserProfile, name='userProfile'),
+    path('business/interface/', views.businessInterface, name='businessInterface'),
+    path('store/', include('Store.urls', namespace='Store')),
 ]
