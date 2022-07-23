@@ -15,4 +15,10 @@ urlpatterns = [
     path('user/profile/', views.reguserProfile, name='userProfile'),
     path('business/interface/', views.businessInterface, name='businessInterface'),
     path('store/', include('Store.urls', namespace='Store')),
+
+
+    path('add_to_cart/<str:pk>/', views.add_to_cart, name='add_to_cart'),
+    path('remove_from_cart/<str:pk>/', views.remove_from_cart, name='remove_from_cart'),
+    path('cart', views.cart, name='cart'),
+    path('cart_product/<str:pk>/', views.cart_product, name='cart_product'),
 ]

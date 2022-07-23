@@ -101,6 +101,8 @@ class userProfile(models.Model):
     residence_locality = models.CharField(max_length=80, null=True, blank=True)
 
 
+
+
     def __str__(self) -> None:
         if self.first_name and self.last_name:
             return f"{self.first_name} {self.last_name}"

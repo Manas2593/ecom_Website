@@ -1,17 +1,59 @@
+{% load tailwind_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Listing</title>
-    <script src="https://kit.fontawesome.com/021374a3b6.js" crossorigin="anonymous"></script>
+    <title>Register Portal</title>
+    {% tailwind_css %}
 </head>
+
 <body>
-    <form action="" enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Submit</button>
-    </form>
+    {% include 'User/navbar.html' %}
+    {% include 'User/navbar_main.html' %}
+
+
+    {% block content %}
+    <div class="bg-white flex flex-col justify-center items-center" style="height: 1500px; width: 100%;">
+        <h1 class="bg-gray-100 flex justify-center items-center text-5xl font-bold font-Monts" style="width: 1200px; height: 80px;">List A Product</h1>
+        <form method="post" action="" class="login_wrap h-fit bg-gray-100 flex justify-center p-8" style="width: 1200px;">
+            {% csrf_token %}
+            <div class="w-1/2 p-6">
+                <h1 class="w-full text-black text-3xl font-bold tracking-widest font-Monts text-center border-b-2 border-black">Product Details</h1>
+                <div class="w-full flex flex-col items-center mt-6 h-fit">
+                    <label for="product_name" class="text-black text-xl font-Monts mt-5">Product Name</label><br>
+                    {{form.product_name}}
+                    <label for="product_price" class="text-black text-xl font-Monts mt-5">Product Price</label><br>
+                    {{form.product_price}}
+                    <label for="product_descp" class="text-black text-xl font-Monts mt-5">Product Description</label><br>
+                    {{form.product_descp}}
+                    <label for="product_category" class="text-black text-xl font-Monts mt-5">Product Category</label><br>
+                    {{form.product_category}}
+                    <label for="product_brand" class="text-black text-xl font-Monts mt-5">Brand Name</label><br>
+                    {{form.brand_name}}
+                    <!-- <button type="submit" class="mt-8 text-black text-2xl w-full border-2 border-yellow-400 bg-yellow-400 rounded-lg font-Monts hover:bg-yellow-500 hover:border-yellow-500">Submit</button> -->
+                </div>
+            </div>
+            <div class="w-1/2 p-6">
+                <h1 class="text-black text-3xl font-bold tracking-widest font-Monts text-center border-b-2 border-black">Product Images</h1>
+                <div class="w-full flex flex-col items-center mt-6 h-fit">
+                    <label for="product_image_main" class="text-black text-xl font-Monts mt-5">Main Image</label><br>
+                    {{form.product_image_main}}
+                    <!-- <label for="product_image_main" class="text-black text-xl font-Monts mt-5">Main Image</label><br>
+                    <input type="image" name="product_image_main" id="product_image_main" class="w-full ">
+                    <label for="product_image_main" class="text-black text-xl font-Monts mt-5">Main Image</label><br>
+                    <input type="image" name="product_image_main" id="product_image_main" class="w-full "> -->
+                    <button type="submit" class="mt-8 text-black text-2xl w-full border-2 border-yellow-400 bg-yellow-400 rounded-lg font-Monts hover:bg-yellow-500 hover:border-yellow-500">Submit</button>
+                </div>
+            </div>
+            <!-- <h1 class="bg-gray-100 flex justify-center items-center text-5xl font-bold font-Monts" style="width: 1200px; height: 80px;">List A Product</h1> -->
+        </form>
+    </div>
+    {{form.as_p}}
+    {% endblock %}
 </body>
+
 </html>

@@ -10,6 +10,8 @@
 </head>
 {% tailwind_css %}
 <body>
+    {% include 'User/navbar.html' %}
+    {% include 'User/navbar_main_business.html' %}
     <h1>Business Interface</h1>
     <a href="{% url 'Store:product_registration' %}"><button class="ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add Product</button></a>
     <button class="ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add Profile</button>

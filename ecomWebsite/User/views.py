@@ -93,7 +93,7 @@ def businessLogin(request):
     return render(request, 'User/businesslogin.html', context)
 
 
-
+@login_required(login_url='businesslogin')
 def businessInterface(request):
     context = {}
     return render(request, 'User/business_interface.html', context)
@@ -138,3 +138,34 @@ def product(request, pk):
     singleproduct = get_object_or_404(Product, id=pk)
     context = {'singleproduct':singleproduct, 'regusername':regusername}
     return render(request, 'User/product.html', context)
+
+
+def add_to_cart(request, pk):
+    user = request.user.userprofile
+    singleproduct = get_object_or_404(Product, id=pk)
+    singleproduct.procuring_user = user
+    singleproduct.save()
+    return redirect('index')
+
+
+def remove_from_cart(request, pk):
+    user = request.user.userprofile
+    singleproduct = get_object_or_404(Product, id=pk)
+    singleproduct.procuring_user = None
+    singleproduct.save()
+    return redirect('cart')
+
+def cart(request):
+    reguser = request.user
+    user = reguser.userprofile
+    allproducts = Product.objects.filter(procuring_user=user)
+    context = {'allproducts':allproducts, 'user':user}
+    return render(request, 'User/cart.html', context)
+
+
+def cart_product(request, pk):
+    reguser = request.user.userprofile
+    regusername = str(reguser.first_name) + ' ' + str(reguser.last_name)
+    singleproduct = get_object_or_404(Product, id=pk)
+    context = {'singleproduct':singleproduct, 'regusername':regusername}
+    return render(request, 'User/cart_product.html', context)

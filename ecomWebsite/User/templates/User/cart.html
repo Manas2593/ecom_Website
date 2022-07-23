@@ -1,0 +1,58 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+    <script src="https://kit.fontawesome.com/021374a3b6.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    {% include 'User/navbar.html' %}
+    
+
+
+
+    <div class="w-full flex justify-between navbar-main bg-white" style="height:70px; padding: 0 20px;">
+        <div class="h-full font-Monts flex items-center justify-center" style="width:55%;">
+            <input type="text" class="w-96 border-2 border-yellow-400 outline-none" placeholder="Search items"><div class="flex items-center justify-center bg-yellow-400 w-8" style="height:44px;"><i class="fa-solid fa-magnifying-glass"></i></div>
+        </div>
+        <div class="h-full font-Monts flex items-center justify-center" style="width:5%;">Flag</div>
+        <div class="h-full font-Monts flex items-center justify-center" style="width:10%;">Returns & Orders</div>
+        <div class="h-full font-Monts flex items-center justify-center" style="width:13%;">Welcome<br>{{user.first_name}} {{user.last_name}}</div>
+        <div class="h-full font-Monts flex items-center justify-center" style="width:10%;"><a href="{% url 'index' %}">BACK TO HOME</a></div>
+    </div>
+
+
+
+
+
+    <div style="width:100%;" class="flex justify-center items-center text-2xl"><h1>YOUR CART</h1></div>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-wrap -m-4">
+
+            <!-- Product Card starts -->
+            {% for aproduct in allproducts %}
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+              <a class="block relative h-48 rounded overflow-hidden">
+                <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{aproduct.product_image_main.url}}">
+              </a>
+              <div class="mt-4">
+                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{aproduct.product_category}}</h3>
+                <h2 class="text-gray-900 title-font text-lg font-medium">{{aproduct.product_name}}</h2>
+                <p class="mt-1">${{aproduct.product_price}}</p>
+              </div>
+              <a href="{% url 'cart_product' aproduct.id %}"><button class="bg-yellow-400 p-2 rounded-lg">Preview</button></a>
+              <a href="#"><button class=" p-2 rounded-lg text-white" style="background-color:red !important;">Order</button></a>
+            </div>
+            {% endfor %}
+
+            <!-- Product Card ends -->
+          </div>
+        </div>
+      </section>
+</body>
+</html>

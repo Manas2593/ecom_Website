@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/021374a3b6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
     <title>Index</title>
     {% tailwind_css %}
     <style>
@@ -15,6 +16,9 @@
         top: 0;
         z-index: 55;
       }
+      #flag {
+        font-size: 35px;
+     }
     </style>
 </head>
 
@@ -31,6 +35,7 @@
 
             <!-- Product Card starts -->
             {% for aproduct in products %}
+            {% if aproduct.product_category and aproduct.product_name and aproduct.product_image_main and aproduct.product_price and aproduct.procuring_user == None %}
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a class="block relative h-48 rounded overflow-hidden">
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{aproduct.product_image_main.url}}">
@@ -42,6 +47,7 @@
               </div>
               <a href="{% url 'product' aproduct.id %}"><button class="bg-yellow-400 p-2 rounded-lg">View</button></a>
             </div>
+            {% endif %}
             {% endfor %}
 
             <!-- Product Card ends -->

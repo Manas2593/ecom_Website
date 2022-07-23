@@ -1,9 +1,10 @@
-from django.forms import ModelForm
+from django import forms
 from Store.models import *
 
 # Create your forms here
 
-class ProductCreationForm(ModelForm):
+class ProductCreationForm(forms.Form):
     class Meta:
         model = Product
         fields = '__all__'
+        # exclude = ('owner',)
